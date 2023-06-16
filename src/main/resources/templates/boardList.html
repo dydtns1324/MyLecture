@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:java8time="http://www.thymeleaf.org/thymeleaf-extras-java8time">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+    <title>Board List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            height : 890px;
+
+        }
+
+        h1 {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .table-section {
+            width: 100%;
+            border-collapse: collapse;
+            text-align:center;
+
+        }
+
+        th, td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+        background-color: #f5f5f5;
+        }
+              
+        .insert-btn {
+        	width: 200px;
+        	margin: auto;
+        	text-align:center;
+        	margin-top : 20px;
+        	margin-bottom : 10px;
+        }
+        
+        button {
+        	background:lightblue;
+        	font-weight : bold;
+        }
+        
+        .pagination {
+        	margin:auto;
+        	text-align:center;
+        }
+        
+        a {
+        text-decoration : none;
+        }
+        
+        .boardTitle {
+        	width : 40%;
+        }
+        
+        
+        
+    </style>
+</head>
+<body>
+		<div class="container">
+	<a href="/">
+    <h1>Board</h1>
+    </a>
+    <table class="table-section">
+        <thead>
+            <tr>
+                <th>번호</th>
+                <th>제목</th>
+                <th>작성자</th>
+                <th>작성일</th>
+                <th>조회수</th>
+            </tr>
+        </thead>
+        
+        <tbody>
+            <tr th:each="board : ${boardList}">
+                <td th:text="${board.boardId}"></td>         
+                <td class="boardTitle"> <a th:href="@{'/boardDetail/' + ${board.boardId}}" th:text="${board.boardTitle}"></a></td>  
+                <td th:text="${board.boardWriter}"></td>
+                <td th:text="${#temporals.format(board.boardRegdate, 'MM-dd HH:mm')}"></td> <!-- java8 Time 의존성 추가 후 temporals.format으로 정규식적용. -->
+                <td th:text="${board.boardView}"></td>
+            </tr>
+        </tbody>
+        
+    </table>
+   
+	
+</div>
+
+   <div class="insert-btn">
+    <a href="/boardInsert" >
+    <button>게시글 등록</button>
+    </a>
+   </div>
+    
+    <div class="pagination">
+    	<th:block th:each="page : ${#numbers.sequence(startPage, endPage)}">
+    		<th:block th:if="${page > 0">
+			<a th:if="${page != nowPage}" th:href="@{/boardList(page = ${page - 1}, searchKeyword = ${param.searchKeyword})}" th:text ="${page}"></a>
+			<strong th:if="${page == nowPage}" th:text ="${page}" style="color:red"></strong> 
+			</th:block>
+		</th:block>
+		
+		<form action="/boardList" method="get">
+		<input type="text" name="searchKeyword">
+		<button type="submit">검색</button>
+		</form>
+	</div>
+
+
+
+</body>
+</html>

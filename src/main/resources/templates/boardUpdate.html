@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>게시물 작성 폼</title>
+</head>
+	
+	<style>
+		.layout {
+			width : 500px;
+			margin : 0 auto;
+			margin-top : 40px;
+		}
+		
+		.layout input{
+			width: 100%;
+			box-sizing: border-box;
+		}
+		
+		.layout textarea {
+			width : 100%;
+			margin-top : 10px;
+			min-height : 300px;
+		}
+	
+	</style>
+
+
+
+<body>
+
+	<div class="layout">							
+    <form action="/board/update" method="post">
+    	<input type="hidden" name="boardId" th:value="${board.boardId}">
+        <h1>제목</h1>
+        <input name="boardTitle" type="text" th:value="${board.boardTitle}">
+        <h1>내용</h1>
+        <textarea name="boardContent" th:text="${board.boardContent}"></textarea>
+        <button type="submit">수정</button>
+    </form>
+</div>
+</body>
+</html>
