@@ -35,16 +35,11 @@
     <p class="detail-info" th:text="${'작성자: ' + board.boardWriter}">Info</p>
     <p class="detail-info" th:text="${'조회수: ' + board.boardView}">Views</p>
     
-<<<<<<< HEAD
     <div th:each="image : ${images}">
         <img th:src="@{'/images/' + ${image.boardFileName}}" alt="게시글 이미지" />
     </div>
     
     <a th:href="@{'/boardDelete/' + ${board.boardId}}">삭제</a>
-    
-=======
-    <a th:href="@{'/boardDelete/' + ${board.boardId}}">삭제</a>
->>>>>>> 59d2ae2bc3b80f32d432ac5096cc6f491ca54391
     <a th:href="@{'/boardUpdate/' + ${board.boardId}}">수정</a>
     
 </div>

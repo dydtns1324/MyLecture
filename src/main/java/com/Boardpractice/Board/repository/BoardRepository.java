@@ -9,14 +9,7 @@ import com.Boardpractice.Board.entity.Board;
 
 @Repository
 public interface BoardRepository extends JpaRepository<Board, Long>{
-<<<<<<< HEAD
 	
 	Page<Board> findByboardTitleContaining(Pageable pageable, String searchKeyword);
 }
 
-=======
-
-	Page<Board> findByboardTitleContaining(Pageable pageable, String searchKeyword);
-	
-}
->>>>>>> 59d2ae2bc3b80f32d432ac5096cc6f491ca54391
