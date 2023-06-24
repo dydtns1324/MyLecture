@@ -1,11 +1,11 @@
 package com.Boardpractice.Board.controller;
 
+
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.UUID;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,7 +40,6 @@ public class Controller {
 	
 	@Autowired
 	private UserService userService;
-
 	
 	@GetMapping("/")
 	public String main() {   // 메인홈페이지 
@@ -49,6 +48,7 @@ public class Controller {
 	
 	@GetMapping("/boardList")									// 게시판페이지에 리스트형식(페이징)로 출력
 	public String boardList(Model model, 
+
 			@PageableDefault(page = 0, size = 20, sort = "boardId", direction = Sort.Direction.DESC) 
 			Pageable pageable, String searchKeyword) {
 		
@@ -67,7 +67,6 @@ public class Controller {
 		int startPage = Math.max(1, nowPage - 5); 
 		int endPage = Math.min(nowPage + 5, boardList.getTotalPages());
 
-		
 		model.addAttribute("boardList", boardList);
 		model.addAttribute("nowPage",nowPage);
 		model.addAttribute("startPage",startPage);
@@ -76,8 +75,6 @@ public class Controller {
 		return "boardList";
 	}
 	
-	
-
 	
 	@GetMapping("/boardInsert")											// 게시글작성 페이지이동
 	public String insertBoard() {
@@ -94,6 +91,7 @@ public class Controller {
 		if(loginUser != null) {
 			board.setBoardWriter(loginUser.getUserName());
 			boardService.insertBoard(board);
+
 			
 			if(file != null && !file.isEmpty()) {
 				
@@ -128,12 +126,13 @@ public class Controller {
 				
 			}
 			return "redirect:/boardList";
-										
+								
 		} else {
 			return "redirect:/login";
 		}
 
 	}
+
 	
 	@GetMapping("/boardDetail/{boardId}")								// 게시글 보기 
 	public String getBoard(@PathVariable Long boardId, Model model) {	//@PathVariable이란?
@@ -185,12 +184,6 @@ public class Controller {
 	
 	
 	
-	
-	
-	
-	
-	
-	
 	// ------------ 유저 컨트롤러
 	
 	@GetMapping("/register")
@@ -228,40 +221,5 @@ public class Controller {
 		}
 		
 	}
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 }

@@ -27,4 +27,8 @@ public class User {
 	
 	private String userPw;
 	
+<<<<<<< HEAD
+=======
+
+>>>>>>> 59d2ae2bc3b80f32d432ac5096cc6f491ca54391
 }

@@ -108,6 +108,7 @@
     <button>게시글 등록</button>
     </a>
    </div>
+<<<<<<< HEAD
 
     <div class="pagination">
     	<th:block th:each="page : ${#numbers.sequence(startPage, endPage)}">
@@ -117,6 +118,15 @@
 			<strong th:if="${page == nowPage}" th:text ="${page}" style="color:red"></strong> 
 			</th:block>
 			
+=======
+    
+    <div class="pagination">
+    	<th:block th:each="page : ${#numbers.sequence(startPage, endPage)}">
+    		<th:block th:if="${page > 0">
+			<a th:if="${page != nowPage}" th:href="@{/boardList(page = ${page - 1}, searchKeyword = ${param.searchKeyword})}" th:text ="${page}"></a>
+			<strong th:if="${page == nowPage}" th:text ="${page}" style="color:red"></strong> 
+			</th:block>
+>>>>>>> 59d2ae2bc3b80f32d432ac5096cc6f491ca54391
 		</th:block>
 		
 		<form action="/boardList" method="get">
