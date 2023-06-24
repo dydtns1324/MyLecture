@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>게시물 작성 폼</title>
+</head>
+	
+	<style>
+		.layout {
+			width : 500px;
+			margin : 0 auto;
+			margin-top : 40px;
+		}
+		
+		.layout input{
+			width: 100%;
+			box-sizing: border-box;
+		}
+		
+		.layout textarea {
+			width : 100%;
+			margin-top : 10px;
+			min-height : 300px;
+		}
+	
+	</style>
+
+
+
+<body>
+
+	<div class="layout">							
+		<form action="/board/insert" method="post" enctype="multipart/form-data">
+			<h1>제목</h1>
+			<input name="boardTitle" type="text" placeholder="제목을 입력하세요">
+			<h1>내용</h1>
+			<textarea name="boardContent"></textarea>
+			<button type="submit">작성</button>
+			<h1>이미지 첨부</h1>
+	        <input type="file" name="file">
+			<button type="submit">작성</button>
+		</form>
+	</div>
+
+</body>
+</html>

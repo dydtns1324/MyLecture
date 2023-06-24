@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+    <title>Board Detail</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            text-align:center;
+            margin-top:200px;
+        }
+        .detail-title {
+            margin: 20px 0;
+            font-size: 24px;
+        }
+        .detail-content {
+            margin: 20px 0;
+            font-size: 18px;
+        }
+        .detail-info {
+            font-size: 14px;
+            color: grey;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1 class="detail-title" th:text="${'제목: ' + board.boardTitle}">Title</h1>
+    <p class="detail-content" th:text="${'내용: ' + board.boardContent}">Content</p>
+    <p class="detail-info" th:text="${'작성자: ' + board.boardWriter}">Info</p>
+    <p class="detail-info" th:text="${'조회수: ' + board.boardView}">Views</p>
+    
+    <div th:each="image : ${images}">
+        <img th:src="@{'/images/' + ${image.boardFileName}}" alt="게시글 이미지" />
+    </div>
+    
+    <a th:href="@{'/boardDelete/' + ${board.boardId}}">삭제</a>
+    
+    <a th:href="@{'/boardUpdate/' + ${board.boardId}}">수정</a>
+    
+</div>
+		
+
+</body>
+</html>

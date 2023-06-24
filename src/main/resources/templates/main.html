@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	.go {
+		text-align:center;
+		margin:auto;
+		margin-top : 50px;
+		width:300px;
+	}
+	
+	h1 {
+		color : red;
+	}
+	
+	a {
+		color : blue;
+		text-decoration : none;
+	}
+	
+	
+	
+</style>
+</head>
+<body>
+	<div class="go">
+	
+	<a href="/boardList">
+	<h1>게시판 목록 이동</h1>
+	</a>
+	
+	<span th:if="${session.loginUser != null}" th:text="${session.loginUser.userName} + '님'">사용자명</span>
+	<a href="/login" th:unless="${session.loginUser != null}">로그인</a>
+	
+	<a href="/register">회원가입</a>
+	
+	</div>
+	
+
+	
+</body>
+</html>
